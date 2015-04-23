@@ -57,11 +57,15 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # GETTING-STARTED: change 'db.sqlite3' to your sqlite3 database:
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'payments',
+        'USER': 'adminyVbkbtX',
+        'PASSWORD': 'ylNWDX9tD6_L',
+        'HOST': 'mysql://$OPENSHIFT_MYSQL_DB_HOST',
+        'PORT': '$OPENSHIFT_MYSQL_DB_PORT',
     }
 }
 

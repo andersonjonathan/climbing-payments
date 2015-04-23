@@ -4,15 +4,15 @@ from setuptools import setup
 
 setup(
     # GETTING-STARTED: set your app name:
-    name='YourAppName',
+    name='Payments',
     # GETTING-STARTED: set your app name:
     version='1.0',
     # GETTING-STARTED: set your app description:
-    description='OpenShift App',
+    description='Climbing payments',
     # GETTING-STARTED: set author name (your name):
-    author='Your Name',
+    author='Jonathan Anderson',
     # GETTING-STARTED: set author name (your name):
-    author_email='example@example.com',
+    author_email='jonathan@jonathananderson.se',
     # GETTING-STARTED: set author name (your name):
     url='http://www.python.org/sigs/distutils-sig/',
     # GETTING-STARTED: define required django version:
