@@ -1,0 +1,13 @@
+{% load static from staticfiles %}
+<link href="{% static "payments/style.css" %}" rel="stylesheet" type="text/css"
+
+{% if latest_trips_list %}
+    <ul>
+    {% for trip in latest_trips_list %}
+        <li><a href="{% url 'payments:detail' trip.id %}">{{ trip }}</a></li>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

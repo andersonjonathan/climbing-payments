@@ -1,0 +1,9 @@
+{% load staticfiles %}
+<h1>{{ travel }}</h1>
+<p>{{ travel.date }}</p>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<p>{{ travel.driver }}</p>
+{% for passenger in travel.passenger_set.all %}
+    <p>{{ passenger }}</p>
+
+{% endfor %}

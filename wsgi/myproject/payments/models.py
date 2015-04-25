@@ -1,4 +1,5 @@
 # coding=utf-8
+import datetime
 from django.db import models
 from django.utils import timezone
 
@@ -14,6 +15,8 @@ class Place(models.Model):
 
 class Person(models.Model):
     name = models.CharField('namn', max_length=200)
+    phone = models.CharField('Telefonnummer', max_length=200)
+    swish = models.BooleanField('har swish')
 
     def __str__(self):
         return str(self.name)
@@ -25,7 +28,15 @@ class Travel(models.Model):
     driver = models.ForeignKey(Person)
 
     def __str__(self):
-        return str(self.where.__str__() + " " + str(self.when) + " " + self.driver.__str__())
+        return str(self.where.__str__() + " " + str(self.when.date()))
+
+    def was_made_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=30) <= self.pub_date <= now
+
+    def date(self):
+
+        return str(self.when.date())
 
 
 class Passenger(models.Model):
@@ -34,6 +45,19 @@ class Passenger(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class MyTrip(models.Model):
+    person = models.ForeignKey(Person)
+    trip = models.ForeignKey(Travel)
+    cost = models.IntegerField('kostnad')
+    isPayed = models.BooleanField('är betald')
+    payDate = models.DateTimeField('datum för betalning', default=timezone.now)
+
+    def __str__(self):
+        return str(self.person.name)
+
+
 
 
 
