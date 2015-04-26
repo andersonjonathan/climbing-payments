@@ -1,6 +1,6 @@
 {% load static from staticfiles %}
-<link href="{% static "payments/style.css" %}" rel="stylesheet" type="text/css"
-
+<link href="{% static "payments/style.css" %}" rel="stylesheet" type="text/css" />
+<h1>Klätterresor</h1>
 {% if latest_trips_list %}
     <ul>
     {% for trip in latest_trips_list %}
@@ -9,5 +9,5 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No travels are available.</p>
 {% endif %}

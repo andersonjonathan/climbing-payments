@@ -1,8 +1,12 @@
 {% load staticfiles %}
 <h1>{{ travel }}</h1>
-<p>{{ travel.date }}</p>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<p>{{ travel.driver }}</p>
+<p>Plats: {{ travel.where.name }}</p>
+<p>Datum: {{ travel.date }}</p>
+<p>Kostnad/resenär: {{ costPerPassenger }} kr</p>
+
+<h2>Resenärer:</h2>
+<p>Förare: {{ travel.driver }}</p>
+<h3>Passagerare:</h3>
 {% for passenger in travel.passenger_set.all %}
     <p>{{ passenger }}</p>
 

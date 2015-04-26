@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import *
 # Create your views here.
 from django.views import generic
@@ -13,12 +13,10 @@ class IndexView(generic.ListView):
         return Travel.objects.filter(when__lte=timezone.now()).order_by('-when')[:5]
 
 
-class DetailView(generic.DetailView):
-    model = Travel
-    template_name = 'payments/detail.html'
-
-    def get_queryset(self):
-        """
-        Excludes any questions that aren't published yet.
-        """
-        return Travel.objects.filter(when__lte=timezone.now())
+def detail(request, pk ):
+    travel = get_object_or_404(Travel, pk=pk)
+    i = 0
+    for p in Passenger.objects.filter(trip_id = pk):
+        i += 1
+    costPerPassenger = travel.where.fee / (i+1)
+    return render(request, 'payments/detail.html', {'travel': travel, 'costPerPassenger': costPerPassenger})

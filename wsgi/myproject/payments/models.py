@@ -5,6 +5,7 @@ from django.utils import timezone
 
 
 class Place(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField('namn', max_length=200)
     length = models.IntegerField('sträcka tur och retur i km')
     fee = models.IntegerField('kostnad att dela på')
@@ -14,6 +15,7 @@ class Place(models.Model):
 
 
 class Person(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField('namn', max_length=200)
     phone = models.CharField('Telefonnummer', max_length=200)
     swish = models.BooleanField('har swish')
@@ -23,6 +25,7 @@ class Person(models.Model):
 
 
 class Travel(models.Model):
+    id = models.IntegerField(primary_key=True)
     where = models.ForeignKey(Place)
     when = models.DateTimeField('datum för resan', default=timezone.now)
     driver = models.ForeignKey(Person)
@@ -40,6 +43,7 @@ class Travel(models.Model):
 
 
 class Passenger(models.Model):
+    id = models.IntegerField(primary_key=True)
     trip = models.ForeignKey(Travel)
     name = models.ForeignKey(Person)
 
@@ -48,6 +52,7 @@ class Passenger(models.Model):
 
 
 class MyTrip(models.Model):
+    id = models.IntegerField(primary_key=True)
     person = models.ForeignKey(Person)
     trip = models.ForeignKey(Travel)
     cost = models.IntegerField('kostnad')
