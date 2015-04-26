@@ -11,6 +11,10 @@ urlpatterns = [
     url(r'^addPerson/', views.addPerson, name='addPerson'),
     url(r'^addPlace/', views.addPlace, name='addPlace'),
     url(r'^addTravel/', views.addTravel, name='addTravel'),
+    url(r'^person/(?P<pk>[0-9]+)/(?P<did>[0-9]+)/', views.hasPayed, name='hasPayed'),
+    url(r'^person/(?P<pk>[0-9]+)/', views.pay, name='pay'),
+    url(r'^person/', views.PersonView.as_view(), name='person'),
+
 
 
 ]

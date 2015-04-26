@@ -41,6 +41,13 @@ class Travel(models.Model):
 
         return str(self.when.date())
 
+    def costPerPassenger(self, pk):
+        i = 0
+        for p in Passenger.objects.filter(trip_id = pk):
+            i += 1
+        return self.where.fee / (i+1)
+
+
 
 class Passenger(models.Model):
 
@@ -60,7 +67,25 @@ class MyTrip(models.Model):
     payDate = models.DateTimeField('datum för betalning', default=timezone.now)
 
     def __str__(self):
-        return str(self.person.name)
+        return str(str(self.person) + ", " + str(self.trip) + " " + str(self.cost) + " kr, Förare: " + str(self.trip.driver))
+
+    def web_str(self):
+        hasntPayed = ""
+        if (self.cost<0):
+            trip = MyTrip.objects.filter(isPayed = False, trip=self.trip_id)
+            for t in trip:
+                if t.person_id != self.person_id:
+                    if hasntPayed == "":
+                        hasntPayed = str(t.person)
+                    else:
+                        hasntPayed = hasntPayed + ", " + str(t.person)
+            hasntPayed = " &".join(hasntPayed.rsplit(",", 1)) + "."
+
+            return str(str(self.trip) + " " + str(self.cost) + " kr, dessa personer har inte betalat den här resan än: " + hasntPayed )
+        else:
+            return str(str(self.trip) + " " + str(self.cost) + " kr, Förare: " + str(self.trip.driver))
+
+
 
 
 

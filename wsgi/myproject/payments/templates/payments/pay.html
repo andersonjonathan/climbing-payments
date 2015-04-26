@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% load staticfiles %}
+<h1>{{ person }}</h1>
+<hr>
+<h2>Mina obehandlade resor:</h2>
+{% for p in trips %}
+    <p>{{ p.web_str }}</p>
+{% endfor %}
+<hr>
+<h2>Summerat per förare:</h2>
+{% for key, value in toPay.iteritems %}
+    <p>{{ key }}: {{ value }} kr.
+        {% if value > 0  %}
+            {% for dkey, dvalue in driver.iteritems %}
+                {% if key == dkey %}
+                    {% if dvalue.swish == True %}
+                         Swisha pengarna till {{ dvalue.phone }}. <a href="{% url 'payments:hasPayed' person.id dvalue.id%}">Klicka här när du har swishat så nollas skulden till {{ key }}.</a>
+                    {% else %}
+                        cash is king... <a href="/payment/person/{{ person.id }}/driver/{{ dvalue.id }}">Klicka här när du har betalat så nollas skulden till {{ key }}.</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
 
-</body>
-</html>
+        {% endif %}
+
+    </p>
+{% endfor %}
+<hr>

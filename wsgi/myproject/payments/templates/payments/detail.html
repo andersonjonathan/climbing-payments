@@ -5,9 +5,9 @@
 <p>Kostnad/resenär: {{ costPerPassenger }} kr</p>
 
 <h2>Resenärer:</h2>
-<p>Förare: {{ travel.driver }}</p>
+<p>Förare: <a href="{% url 'payments:pay' travel.driver_id %}">{{ travel.driver }}</a></p>
 <h3>Passagerare:</h3>
 {% for passenger in travel.passenger_set.all %}
-    <p>{{ passenger }}</p>
+    <a href="{% url 'payments:pay' passenger.name_id %}">{{ passenger }}</a><br>
 
 {% endfor %}
