@@ -1,0 +1,20 @@
+<form method="post" action="payments/addTravel/">
+
+    {% csrf_token %}
+
+    <table>
+        <tr><td colspan="2"><h1>Lägg till en resa:</h1></td></tr>
+        <tr><td>Plats: </td><td>{{ form.where }}</td></tr>
+        <tr><td>Datum för resan: </td><td>{{ form.when }}</td></tr>
+        <tr><td colspan="2"><h2>Resenärer:</h2></td></tr>
+        <tr><td>Förare: </td><td>{{ form.driver }}</td></tr>
+        <tr><td colspan="2"><h3>Passagerare:</h3></td></tr>
+        {% for f in formset %}
+            <tr><td>Namn: </td><td>{{ f.name }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <button>Spara</button>
+<input id="id_form-TOTAL_FORMS" name="form-TOTAL_FORMS" type="hidden" value="6" /><input id="id_form-INITIAL_FORMS" name="form-INITIAL_FORMS" type="hidden" value="0" /><input id="id_form-MIN_NUM_FORMS" name="form-MIN_NUM_FORMS" type="hidden" value="1" /><input id="id_form-MAX_NUM_FORMS" name="form-MAX_NUM_FORMS" type="hidden" value="1000" />
+
+</form>
