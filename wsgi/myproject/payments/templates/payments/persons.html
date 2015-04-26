@@ -1,0 +1,13 @@
+{% load static from staticfiles %}
+<link href="{% static "payments/style.css" %}" rel="stylesheet" type="text/css" />
+<h1>Klätterresor</h1>
+{% if person_list %}
+    <ul>
+    {% for person in person_list %}
+        <li><a href="{% url 'payments:pay' person.id %}">{{ person }}</a></li>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No travels are available.</p>
+{% endif %}
