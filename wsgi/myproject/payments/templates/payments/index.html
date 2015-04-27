@@ -1,5 +1,7 @@
-{% load static from staticfiles %}
-<link href="{% static "payments/style.css" %}" rel="stylesheet" type="text/css" />
+{% extends "payments/master.html" %}
+{% block body %}
+<div class="well well-lg">
+
 <h1>Klätterresor</h1>
 {% if latest_trips_list %}
     <ul>
@@ -11,3 +13,9 @@
 {% else %}
     <p>No travels are available.</p>
 {% endif %}
+</div>
+    <script>
+        var element = document.getElementById("phome");
+        element.classList.add("active");
+    </script>
+{% endblock %}

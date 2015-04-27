@@ -1,5 +1,6 @@
-{% load static from staticfiles %}
-<link href="{% static "payments/style.css" %}" rel="stylesheet" type="text/css" />
+{% extends "payments/master.html" %}
+{% block body %}
+<div class="well well-lg">
 <h1>Personer</h1>
 {% if person_list %}
     <ul>
@@ -11,3 +12,9 @@
 {% else %}
     <p>No persons are available.</p>
 {% endif %}
+</div>
+<script>
+        var element = document.getElementById("pperson");
+        element.classList.add("active");
+    </script>
+{% endblock %}

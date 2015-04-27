@@ -1,20 +1,51 @@
-<form method="post" action="payments/addTravel/">
+{% extends "payments/master.html" %}
+{% load widget_tweaks %}
+{% block body %}
 
+<div class="well well-lg">
+<form method="post" action="payments/addTravel/"  class="form-horizontal">
+<fieldset>
+        <h2>Lägg till ny resa</h2>
     {% csrf_token %}
+    <div class="form-group">
+            <label for="where" class="col-lg-2 control-label">Plats: </label>
+            <div class="col-lg-10">
+                {{ form.where|add_class:"form-control" }}
+            </div>
+    </div>
+<div class="form-group">
+            <label for="when" class="col-lg-2 control-label">Datum för resan:</label>
+            <div class="col-lg-10">
+                {{ form.when|add_class:"form-control" }}
+            </div>
+        </div>
+    <div class="form-group">
+            <label for="driver" class="col-lg-2 control-label">Förare: </label>
+            <div class="col-lg-10">
+                {{ form.driver|add_class:"form-control" }}
+            </div>
+    </div>
+<h3>Passagerare</h3>
+{% for f in formset %}
+    <div class="form-group">
+            <label for="select" class="col-lg-2 control-label">Namn: </label>
+            <div class="col-lg-10">
+                {{ f.name|add_class:"form-control" }}
+            </div>
+    </div>
+{% endfor %}
 
-    <table>
-        <tr><td colspan="2"><h1>Lägg till en resa:</h1></td></tr>
-        <tr><td>Plats: </td><td>{{ form.where }}</td></tr>
-        <tr><td>Datum för resan: </td><td>{{ form.when }}</td></tr>
-        <tr><td colspan="2"><h2>Resenärer:</h2></td></tr>
-        <tr><td>Förare: </td><td>{{ form.driver }}</td></tr>
-        <tr><td colspan="2"><h3>Passagerare:</h3></td></tr>
-        {% for f in formset %}
-            <tr><td>Namn: </td><td>{{ f.name }}</td></tr>
-        {% endfor %}
-    </table>
-
-    <button>Spara</button>
+    <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Spara</button>
+            </div>
+        </div>
 <input id="id_form-TOTAL_FORMS" name="form-TOTAL_FORMS" type="hidden" value="6" /><input id="id_form-INITIAL_FORMS" name="form-INITIAL_FORMS" type="hidden" value="0" /><input id="id_form-MIN_NUM_FORMS" name="form-MIN_NUM_FORMS" type="hidden" value="1" /><input id="id_form-MAX_NUM_FORMS" name="form-MAX_NUM_FORMS" type="hidden" value="1000" />
-
+</fieldset>
 </form>
+</div>
+    <script>
+        var element = document.getElementById("paddtravel");
+        element.classList.add("active");
+    </script>
+    {% endblock %}

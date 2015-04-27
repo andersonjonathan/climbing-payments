@@ -1,4 +1,8 @@
-<form action="/addPerson/" method="post">
+{% extends "payments/master.html" %}
+{% load widget_tweaks %}
+{% block body %}
+    <div class="well well-lg">
+<form action="/addPerson/" method="post"  class="form-horizontal">
     {% csrf_token %}
     <table>
     {{ form }}
@@ -6,3 +10,9 @@
     <tr><th colspan="2"><input type="submit" value="Submit" /></th></tr>
     </table>
 </form>
+        </div>
+    <script>
+        var element = document.getElementById("paddperson");
+        element.classList.add("active");
+    </script>
+{% endblock %}

@@ -81,11 +81,13 @@ class MyTrip(models.Model):
                         hasntPayed = hasntPayed + ", " + str(t.person)
             hasntPayed = " &".join(hasntPayed.rsplit(",", 1)) + "."
 
-            return str(str(self.trip) + " " + str(self.cost) + " kr, dessa personer har inte betalat den här resan än: " + hasntPayed )
+            return str(str(self.trip) + ", " + str(self.cost) + " kr, dessa personer har inte betalat den här resan än: " + hasntPayed )
         else:
-            return str(str(self.trip) + " " + str(self.cost) + " kr, Förare: " + str(self.trip.driver))
+            return str(str(self.trip) + ", " + str(self.cost) + " kr, förare: " + str(self.trip.driver))
 
+    def pweb_str(self):
 
+        return str(str(self.trip) + ", " + str(self.cost) + " kr, förare: " + str(self.trip.driver) + ", betald " + str(self.payDate.date()))
 
 
 

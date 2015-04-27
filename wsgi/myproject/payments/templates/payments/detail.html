@@ -1,4 +1,7 @@
-{% load staticfiles %}
+{% extends "payments/master.html" %}
+{% block body %}
+
+<div class="well well-lg">
 <h1>{{ travel }}</h1>
 <p>Plats: {{ travel.where.name }}</p>
 <p>Datum: {{ travel.date }}</p>
@@ -8,6 +11,8 @@
 <p>Förare: <a href="{% url 'payments:pay' travel.driver_id %}">{{ travel.driver }}</a></p>
 <h3>Passagerare:</h3>
 {% for passenger in travel.passenger_set.all %}
-    <a href="{% url 'payments:pay' passenger.name_id %}">{{ passenger }}</a><br>
+   <p> <a href="{% url 'payments:pay' passenger.name_id %}">{{ passenger }}</a></p>
 
 {% endfor %}
+    </div>
+    {% endblock %}

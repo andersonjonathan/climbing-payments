@@ -1,0 +1,95 @@
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Resebetalning</title>
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{% static "payments/css/roboto.min.css" %}" rel="stylesheet" type="text/css" >
+        <link href="{% static "payments/css/material.min.css" %}" rel="stylesheet" type="text/css" >
+        <link href="{% static "payments/css/ripples.min.css" %}" rel="stylesheet" type="text/css" >
+        <link href="{% static "payments/style.css" %}" rel="stylesheet" type="text/css" >
+    </head>
+    <body>
+
+        <div class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/payments/">Klätterresor</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+            <li id="phome"><a href="/payments/" >Hem</a></li>
+            <li id="paddtravel"><a href="/payments/addTravel/">Lägg till ny resa</a></li>
+            <li class="dropdown">
+                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Fler alternativ <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li id="paddperson"><a href="/payments/addPerson/">Lägg till en person</a></li>
+                    <li id="paddplace"><a href="/payments/addPlace/">Lägg till ett resmål</a></li>
+                    <li id="paddtravel"><a href="/payments/addTravel/">Lägg till ny resa</a></li>
+                    <li class="divider"></li>
+                    <li id="pperson"><a href="/payments/person/">Lista över resenärer</a></li>
+
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown">
+                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/payments/login/">Logga in</a></li>
+                    <li class="divider"></li>
+                    <li>
+                    <form action="/login/" method="post" class="form-horizontal">
+                        {% csrf_token %}
+
+                        <div class="col-lg-10 col-lg-offset-1">
+                                <input type="text" class="form-control" id="inputUsername" placeholder="Användarnamn"  name="username">
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-1">
+
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Lösenord" name="password">
+                        </div>
+
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <button type="submit" class="btn btn-primary">Logga in!</button>
+                            </div>
+
+                    </form></li>
+                    <li class="divider"></li>
+                    <li><a href="/payments/logout/">Logga ut</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+        <div class="col-lg-12 " >
+        <div class="col-lg-2 hidden-xs" ></div>
+        <div id="wrapper" class="col-lg-8 col-xs-12" >
+            {% block body %}
+
+            {% endblock %}
+        </div>
+        <div class="col-lg-2 hidden-xs" ></div>
+        </div>
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        <script src="js/ripples.min.js"></script>
+        <script src="js/material.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+        </script>
+    </body>
+</html>

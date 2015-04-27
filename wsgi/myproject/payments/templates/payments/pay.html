@@ -1,4 +1,8 @@
-{% load staticfiles %}
+{% extends "payments/master.html" %}
+{% block body %}
+
+
+<div class="well well-lg">
 <h1>{{ person }}</h1>
 <hr>
 <h2>Mina obehandlade resor:</h2>
@@ -26,3 +30,10 @@
     </p>
 {% endfor %}
 <hr>
+<h2>Mina behandlade resor:</h2>
+{% for p in payedTrips %}
+    <p>{{ p.pweb_str }}</p>
+{% endfor %}
+<hr>
+</div>
+    {% endblock %}
