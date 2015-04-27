@@ -111,7 +111,7 @@ def addTravel(request):
             form = TravelForm()
             formset = PassengerFormSet()
 
-        return render(request, 'payments/addTravel.html', {'form': form, 'formset': formset}).encode( "utf-8" )
+        return render(request, 'payments/addTravel.html', {'form': form, 'formset': formset})
     else:
         return render(request, 'payments/login.html')
 
