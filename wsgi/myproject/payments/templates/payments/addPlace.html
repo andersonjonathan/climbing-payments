@@ -5,11 +5,25 @@
 <div class="well well-lg">
 <form action="/addPlace/" method="post"  class="form-horizontal">
     {% csrf_token %}
-    <table>
-    {{ form }}
 
-    <tr><th colspan="2"><input type="submit" value="Submit" /></th></tr>
-    </table>
+<div class="form-group">
+    <label for="name" class="col-lg-2 control-label">Plats:</label>
+    <div class="col-lg-10">
+        {{ form.name|add_class:"form-control" }}
+    </div>
+    <label for="length" class="col-lg-2 control-label">Längd i km:</label>
+    <div class="col-lg-10">
+        {{ form.length|add_class:"form-control" }}
+    </div>
+    <label for="fee" class="col-lg-2 control-label">Kostnad i kr:</label>
+    <div class="col-lg-10">
+        {{ form.fee|add_class:"form-control" }}
+        <br>
+        <button type="submit" class="btn btn-primary">Spara<div class="ripple-wrapper"></div></button>
+    </div>
+</div>
+
+
 </form>
     </div>
     <script>

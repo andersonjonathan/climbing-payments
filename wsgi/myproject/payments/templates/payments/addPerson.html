@@ -4,11 +4,27 @@
     <div class="well well-lg">
 <form action="/addPerson/" method="post"  class="form-horizontal">
     {% csrf_token %}
-    <table>
-    {{ form }}
 
-    <tr><th colspan="2"><input type="submit" value="Submit" /></th></tr>
-    </table>
+
+
+<div class="form-group">
+    <label for="name" class="col-lg-2 control-label">Namn:</label>
+    <div class="col-lg-10">
+        {{ form.name|add_class:"form-control" }}
+    </div>
+    <label for="phone" class="col-lg-2 control-label">Telefon:</label>
+    <div class="col-lg-10">
+        {{ form.phone|add_class:"form-control" }}
+        <br>
+        <div class="togglebutton ">
+            <label>
+                {{ form.swish }}<span class="toggle" ></span> Swish
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Spara<div class="ripple-wrapper"></div></button>
+    </div>
+</div>
+
 </form>
         </div>
     <script>

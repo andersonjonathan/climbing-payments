@@ -19,7 +19,7 @@
                     {% if dvalue.swish == True %}
                          Swisha pengarna till {{ dvalue.phone }}. <a href="{% url 'payments:hasPayed' person.id dvalue.id%}">Klicka här när du har swishat så nollas skulden till {{ key }}.</a>
                     {% else %}
-                        cash is king... <a href="/payment/person/{{ person.id }}/driver/{{ dvalue.id }}">Klicka här när du har betalat så nollas skulden till {{ key }}.</a>
+                        Cash is king... <a href="{% url 'payments:hasPayed' person.id dvalue.id%}">Klicka här när du har betalat så nollas skulden till {{ key }}.</a>
                     {% endif %}
                 {% endif %}
             {% endfor %}
