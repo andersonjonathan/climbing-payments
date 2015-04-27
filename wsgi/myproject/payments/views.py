@@ -1,3 +1,4 @@
+# coding=utf-8
 from django.shortcuts import render, get_object_or_404
 from .models import *
 # Create your views here
@@ -43,7 +44,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Travel.objects.filter(when__lte=timezone.now()).order_by('-when')[:5]
+        return Travel.objects.filter(when__lte=timezone.now()).order_by('-when')
 
 
 def detail(request, pk ):
@@ -110,7 +111,7 @@ def addTravel(request):
             form = TravelForm()
             formset = PassengerFormSet()
 
-        return render(request, 'payments/addTravel.html', {'form': form, 'formset': formset})
+        return render(request, 'payments/addTravel.html', {'form': form, 'formset': formset}).encode( "utf-8" )
     else:
         return render(request, 'payments/login.html')
 
