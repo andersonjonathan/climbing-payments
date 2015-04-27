@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
-# Create your views here.
+# Create your views here
 from django.views import generic
 from .forms import *
 from django.http import HttpResponseRedirect
