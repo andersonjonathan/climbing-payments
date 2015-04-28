@@ -29,6 +29,7 @@ class Travel(models.Model):
     where = models.ForeignKey(Place)
     when = models.DateTimeField('datum för resan', default=timezone.now)
     driver = models.ForeignKey(Person)
+    driver_shall_not_pay = models.BooleanField('föraren skall ej vara med och dela på avgiften', default=False)
 
     def __str__(self):
         return str(self.where.__str__() + " " + str(self.when.date()))
