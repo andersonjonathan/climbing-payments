@@ -28,6 +28,6 @@ class PassengerForm(ModelForm):
 class TravelForm(ModelForm):
     class Meta:
         model = Travel
-        fields = ['where', 'when', 'driver']
+        fields = ['where', 'when', 'driver','driver_shall_not_pay' ]
 
 

@@ -2,7 +2,6 @@
 {% load widget_tweaks %}
 
 {% block body %}
-
 <div class="well well-lg">
 <form method="post" action="payments/addTravel/"  class="form-horizontal">
 <fieldset>
@@ -24,6 +23,12 @@
             <label for="driver" class="col-lg-2 control-label">Förare: </label>
             <div class="col-lg-10">
                 {{ form.driver|add_class:"form-control" }}
+                <div class="checkbox">
+                    <label>
+                        {{ form.driver_shall_not_pay }} Föraren skall inte vara med och betala
+                    </label>
+                </div>
+
             </div>
     </div>
 <h3>Passagerare</h3>

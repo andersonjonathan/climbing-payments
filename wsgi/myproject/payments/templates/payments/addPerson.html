@@ -15,14 +15,21 @@
     <label for="phone" class="col-lg-2 control-label">Telefon:</label>
     <div class="col-lg-10">
         {{ form.phone|add_class:"form-control" }}
-        <br>
-        <div class="togglebutton ">
+    </div>
+    <label for="swish" class="col-lg-2 control-label">Swish:</label>
+    <div class="col-lg-10" style="margin-top: 6px">
+
+        <div class="togglebutton">
             <label>
-                {{ form.swish }}<span class="toggle" ></span> Swish
+                {{ form.swish }}
             </label>
         </div>
+
+        <br>
         <button type="submit" class="btn btn-primary">Spara<div class="ripple-wrapper"></div></button>
     </div>
+
+
 </div>
 
 </form>

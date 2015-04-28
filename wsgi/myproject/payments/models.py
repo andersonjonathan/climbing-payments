@@ -46,7 +46,10 @@ class Travel(models.Model):
         i = 0
         for p in Passenger.objects.filter(trip_id = pk):
             i += 1
-        return self.where.fee / (i+1)
+        if self.driver_shall_not_pay:
+            return self.where.fee / i
+        else:
+            return self.where.fee / (i+1)
 
 
 

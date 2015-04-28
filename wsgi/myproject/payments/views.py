@@ -133,7 +133,7 @@ def pay(request, pk):
         totalcost = {}
         driver = {}
         for t in trips:
-            if totalcost.has_key(t.trip.driver.name):
+            if t.trip.driver.name in totalcost:
                 totalcost[t.trip.driver.name] = totalcost[t.trip.driver.name] + t.cost
             else:
                 totalcost[t.trip.driver.name] = t.cost
