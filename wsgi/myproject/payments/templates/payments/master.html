@@ -9,13 +9,14 @@
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
         <link href="{% static "payments/css/roboto.min.css" %}" rel="stylesheet" type="text/css" >
-        <link href="{% static "payments/css/material.min.css" %}" rel="stylesheet" type="text/css" >
+        <link href="{% static "payments/css/material-fullpalette.min.css" %}" rel="stylesheet" type="text/css" >
         <link href="{% static "payments/css/ripples.min.css" %}" rel="stylesheet" type="text/css" >
         <link href="{% static "payments/style.css" %}" rel="stylesheet" type="text/css" >
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-
-        <div class="navbar navbar-default">
+    <div class="bs-component">
+    <div class="navbar navbar-default">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
             <span class="icon-bar"></span>
@@ -24,7 +25,7 @@
         </button>
         <a class="navbar-brand" href="/payments/">Klätterresor</a>
     </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <div class="navbar-collapse navbar-responsive-collapse collapse" aria-expanded="false" style="height: 1px;">
         <ul class="nav navbar-nav">
             <li id="phome"><a href="/payments/" >Hem</a></li>
             <li id="paddtravel"><a href="/payments/addTravel/">Lägg till ny resa</a></li>
@@ -73,6 +74,7 @@
             <li class="col-lg-2"></li>
         </ul>
     </div>
+</div>
 </div>
         <div class="col-lg-12 " >
         <div class="col-lg-2 hidden-xs" ></div>
