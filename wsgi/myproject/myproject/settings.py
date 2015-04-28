@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 ON_OPENSHIFT = False
-if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+if 'OPENSHIFT_REPO_DIR' in os.environ:
     ON_OPENSHIFT = True
 
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
