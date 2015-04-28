@@ -138,7 +138,8 @@ def pay(request, pk):
             else:
                 totalcost[t.trip.driver.name] = t.cost
                 driver[t.trip.driver.name] = t.trip.driver
-        return render(request, 'payments/pay.html', {'person': person, 'trips':trips, 'toPay':totalcost, 'driver':driver, 'payedTrips':payedTrips,})
+        print(totalcost)
+        return render(request, 'payments/pay.html', {'person': person, 'trips':trips, 'toPay':totalcost, 'driver':driver, 'payedTrips':payedTrips})
     else:
         return render(request, 'payments/login.html')
 
