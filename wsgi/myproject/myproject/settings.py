@@ -19,11 +19,6 @@ BASE_DIR = os.path.dirname(DJ_PROJECT_DIR)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!iudke*hi8vo#qyntq5yxm+p2itkuqg-m@bo8o%+cbnq(h%@@-'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -65,8 +60,9 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 if ON_OPENSHIFT:
-    # os.environ['OPENSHIFT_MYSQL_DB_*'] variables can be used with databases created
-    # with rhc cartridge add (see /README in this git repo)
+    DEBUG = False
+    TEMPLATE_DEBUG = False
+
     DATABASES = {
         'default': {
             'ENGINE': 'mysql_cymysql',
@@ -78,6 +74,9 @@ if ON_OPENSHIFT:
         }
     }
 else:
+    DEBUG = True
+    TEMPLATE_DEBUG = True
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
