@@ -1,2 +1,3 @@
 django-widget-tweaks
-mysql-python
+cymysql
+django-cymysql
