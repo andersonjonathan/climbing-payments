@@ -156,6 +156,8 @@ def hasPayed(request, pk, did):
                 t.save()
                 trip = MyTrip.objects.filter(person_id=did, trip=t.trip_id)[0]
                 trip.cost = trip.cost + t.cost
+                if trip.cost == 0:
+                    trip.isPayed = True
                 trip.save()
         return HttpResponseRedirect('/person/' + pk + '/')
     else:
