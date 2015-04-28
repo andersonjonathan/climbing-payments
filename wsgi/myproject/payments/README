@@ -1,3 +1,9 @@
 Kända buggar:
 Om bilägaren inte är med, blir kostnaden fel då det splittas på passagerarna och föraren.
 Går bara att använda ASCII tecken.
+ligger som obehandlad för föraren trots 0 kr
+
+Framtida funktioner:
+Delbetalning, eller välj villka som ska betalas.
+Ändra på namn, avgifter, osv.
+Knyt användare till person.
